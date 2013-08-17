@@ -1,4 +1,4 @@
-<plugin name='wro4j' version='1.7.1-SNAPSHOT' grailsVersion='1.3.7 &gt; *'>
+<plugin name='wro4j' version='1.7.0' grailsVersion='1.3.7 &gt; *'>
   <author>Romain Philibert</author>
   <authorEmail>filirom1@gmail.com</authorEmail>
   <title>Wro4j Grails Plugin</title>
@@ -14,8 +14,37 @@
     <repository name='mavenCentral' url='http://repo1.maven.org/maven2/' />
     <repository name='http://repository.codehaus.org' url='http://repository.codehaus.org/' />
   </repositories>
-  <dependencies />
-  <plugins />
+  <dependencies>
+    <test>
+      <dependency group='org.mockito' name='mockito-core' version='1.9.5' />
+      <dependency group='org.grails' name='grails-test' version='2.2.3' />
+      <dependency group='org.gebish' name='geb-spock' version='0.9.0' />
+      <dependency group='org.spockframework' name='spock-grails-support' version='0.7-groovy-2.0' />
+      <dependency group='org.seleniumhq.selenium' name='selenium-firefox-driver' version='2.31.0' />
+      <dependency group='junit' name='junit' version='4.11' />
+    </test>
+    <compile>
+      <dependency group='org.slf4j' name='slf4j-api' version='1.7.2' />
+      <dependency group='ro.isdc.wro4j' name='wro4j-extensions' version='1.7.1-SNAPSHOT' />
+    </compile>
+    <provided>
+      <dependency group='org.slf4j' name='slf4j-log4j12' version='1.7.2' />
+      <dependency group='net.sourceforge.nekohtml' name='nekohtml' version='1.9.15' />
+      <dependency group='org.codehaus.groovy.modules.http-builder' name='http-builder' version='0.5.2' />
+    </provided>
+  </dependencies>
+  <plugins>
+    <test>
+      <plugin group='org.grails.plugins' name='geb' version='0.9.0' />
+      <plugin group='org.grails.plugins' name='spock' version='0.7' />
+    </test>
+    <compile>
+      <plugin group='org.grails.plugins' name='rest-client-builder' version='1.0.3' />
+    </compile>
+    <provided>
+      <plugin group='org.grails.plugins' name='tomcat' version='2.2.3' />
+    </provided>
+  </plugins>
   <runtimePluginRequirements />
   <behavior />
 </plugin>
