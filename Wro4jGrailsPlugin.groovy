@@ -9,7 +9,7 @@ import wro4j.grails.plugin.WroConfigHandler
 import wro4j.grails.plugin.WroDSLHandler
 
 class Wro4jGrailsPlugin {
-  def groupId = "ro.isdc.wro4j"
+  def groupId = /* @@GROUPID@@ */ "org.grails.plugins" /* @@GROUPID@@ */
   // the plugin version == wro4j version
   def version = /* @@VERSION@@ */ "1.7.1-SNAPSHOT" /* @@VERSION@@ */
   def grailsVersion = "1.3.7 > *"
@@ -28,7 +28,7 @@ class Wro4jGrailsPlugin {
 
   def documentation = "http://code.google.com/p/wro4j/wiki/GrailsPlugin"
   def license = "APACHE"
-  def scm = [ url: "https://github.com/alexo/wro4j" ]
+  def scm = [ url: "https://github.com/wro4j/wro4j-grails-plugin" ]
   def issueManagement = [ system: "googleCode", url: "https://code.google.com/p/wro4j/issues/list" ]
 
   def doWithWebDescriptor = { xml ->

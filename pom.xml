@@ -4,23 +4,65 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>ro.isdc.wro4j</groupId>
-        <artifactId>wro4j-parent</artifactId>
-        <version>1.7.1-SNAPSHOT</version>
-    </parent>
-    <artifactId>grails-wro4j</artifactId>
+    	<groupId>org.sonatype.oss</groupId>
+    	<artifactId>oss-parent</artifactId>
+    	<version>7</version>
+   	</parent>
+    <artifactId>wro4j</artifactId>
+    <groupId>org.grails.plugins</groupId>
     <packaging>grails-plugin</packaging>
     <name>Wro4j Grails Plugin</name>
+    <inceptionYear>2012</inceptionYear>
     <description>Web Resource Optimizer for Grails</description>
+    <version>${wro4j.version}-SNAPSHOT</version>
+    <issueManagement>
+    	<system>googleCode</system>
+    	<url>http://code.google.com/p/wro4j/issues/list</url>
+   	</issueManagement>
+   	<licenses>
+   		<license>
+   			<name>The Apache Software License, Version 2.0</name>
+   			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+   			<distribution>repo</distribution>
+   			</license>
+ 		</licenses>
+ 		<scm>
+ 		<connection>scm:git:git://github.com/wro4j/wro4j-grails-plugin.git</connection>
+ 		<developerConnection>scm:git:git://github.com/wro4j/wro4j-grails-plugin.git</developerConnection>
+ 		<url>http://github.com/wro4j/wro4j-grails-plugin.git</url>
+ 		</scm>
+ 		<mailingLists>
+ 			<mailingList>
+ 				<name>Discussion Group</name>
+ 				<post>wro4j@googlegroups.com</post>
+ 				<archive>http://groups.google.com/group/wro4j</archive>
+			</mailingList>
+		</mailingLists>
+		<developers>
+			<developer>
+				<id>alex.objelean</id>
+				<name>Alex Objelean</name>
+				<email>alex.objelean@gmail.com</email>
+				<timezone>+2</timezone>
+			</developer>
+			<developer>
+				<id>bogdan.csoregi</id>
+				<name>Bogdan Csoregi</name>
+				<email>bogdan.csoregi@gmail.com</email>
+				<timezone>+2</timezone>
+			</developer>
+		</developers>
     <properties>
+    	<wro4j.version>1.7.1</wro4j.version> <!-- Change this when changing the wro4j version -->
         <grails.version>2.2.3</grails.version>
         <geb.version>0.9.0</geb.version>
         <selenium.version>2.31.0</selenium.version>
     </properties>
     <dependencies>
         <dependency>
-            <groupId>${project.groupId}</groupId>
+            <groupId>ro.isdc.wro4j</groupId>
             <artifactId>wro4j-extensions</artifactId>
+            <version>${wro4j.version}</version>
             <exclusions>
             	<exclusion>
             		<groupId>org.slf4j</groupId>
@@ -249,6 +291,10 @@
 			            <replacement>
 			                <token>/\*\s*@@DESCRIPTION@@\s*\*/\s*".*"\s*/\*\s*@@DESCRIPTION@@\s*\*/</token>
 			                <value>/* @@DESCRIPTION@@ */ "${project.description}" /* @@DESCRIPTION@@ */</value>
+			            </replacement>
+			            <replacement>
+			                <token>/\*\s*@@GROUPID@@\s*\*/\s*".*"\s*/\*\s*@@GROUPID@@\s*\*/</token>
+			                <value>/* @@GROUPID@@ */ "${project.groupId}" /* @@GROUPID@@ */</value>
 			            </replacement>
 			        </replacements>
 			    </configuration>

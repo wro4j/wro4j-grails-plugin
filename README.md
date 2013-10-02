@@ -5,7 +5,7 @@ Install the plugin by adding the following to BuildConfig.groovy:
 
     grails.project.dependency.resolution {
        plugins {
-          compile 'ro.isdc.wro4j:grails-wro4j:latest.release'
+          compile ':wro4j:latest.release'
        }
     }
 
