@@ -4,6 +4,7 @@ jdk:
 # if we run on the same box as previous build, make sure target is clean
 before_script: rm -rf target
 script: ./grailsw refresh-dependencies --non-interactive
+  && ./grailsw test-app --non-interactive
   && ./grailsw package-plugin --non-interactive
   && if [[ $TRAVIS_BRANCH == 'master' ]]; then ./grailsw publish-plugin --no-scm --allow-overwrite --non-interactive ; else echo "Not on master branch, so not publishing"; fi
 env:
