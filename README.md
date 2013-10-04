@@ -167,7 +167,12 @@ It will create a plugin archive. Note that the selenium tests require that firef
 
 ## Releasing a new version of this plugin
 
-run 'grailsw publish-plugin --no-scm'
+1. In Wro4jGrailsPlugin.groovy, set the plugin version to a non-snapshot version number (ex 1.7.1)
+2. run 'grailsw publish-plugin --no-scm'
+3. Update the version of wro4j in grails-app/conf/BuildConfig.groovy (optional)
+4. Update the plugin version in Wro4jGrailsPlugin.groovy to be a snapshot (ex "1.7.2-SNAPSHOT")
+
+The plugin version and the wro4j version should be kept in sync for simplicity's sake. For example, plugin version 1.7.1 should use wro4j 1.7.1.
 
 # Wro Processors
 
