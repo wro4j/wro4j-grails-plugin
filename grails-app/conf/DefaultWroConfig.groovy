@@ -63,6 +63,11 @@ wro.mbeanName = null
  */
 wro.header = null
 
+/**
+ * The path to Wro.groovy. The file must be named Wro.groovy, but can be located anywhere.
+ */
+wro.wroPath = "file:./grails-app/conf/Wro.groovy"
+
 environments {
   production {
     wro.debug = false

@@ -24,7 +24,7 @@ Install the plugin by adding the following to BuildConfig.groovy:
       }
     }
 
-
+Wro.groovy can be located anywhere; see the configuration option 'wro.wroPath' below.
 
 ## Step 3: Use optimized resources
 
@@ -115,6 +115,12 @@ Install the plugin by adding the following to BuildConfig.groovy:
      * The parameter used to specify headers to put into the response, used mainly for caching.
      */
     wro.header = null
+
+    /**
+     * The path to Wro.groovy. The file must be named Wro.groovy, but can be located anywhere.
+     */
+    wro.wroPath = "file:./grails-app/conf/Wro.groovy"
+    
 
     environments {
       production {

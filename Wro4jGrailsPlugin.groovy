@@ -1,3 +1,5 @@
+import grails.util.Holders;
+
 import org.springframework.context.ApplicationContext
 import org.springframework.web.filter.DelegatingFilterProxy
 
@@ -82,7 +84,7 @@ class Wro4jGrailsPlugin {
 	}
   }
 
-  def watchedResources = "file:./grails-app/conf/Wro.groovy"
+  def watchedResources = [Holders.config.wro.wroPath]
 
   /** Detect Wro.groovy changes     */
   def onChange = { event ->
