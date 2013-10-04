@@ -12,8 +12,7 @@ target-eclipse/
 # Mac
 .DS_Store
 
-# Maven
-target/
+# Grails artifacts
 plugin.xml
-plugins
-
+grails-wro4j-*.zip
+target/

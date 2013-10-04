@@ -1,34 +1,32 @@
 grails.project.work.dir = 'target'
 
+grails.project.repos.grailsCentral.username = System.getenv("GRAILS_CENTRAL_USERNAME")
+grails.project.repos.grailsCentral.password = System.getenv("GRAILS_CENTRAL_PASSWORD")
+
 grails.project.dependency.resolution = {
 
   inherits 'global'
   log 'warn'
   
-  pom true
   repositories {
     mavenLocal()
     grailsCentral()
     mavenCentral()
-    mavenRepo "http://repository.codehaus.org"
-  }
-/*
-  repositories {
-    mavenLocal()
-    mavenCentral()
-    mavenRepo "http://repository.codehaus.org"
   }
 
-  def gebVersion = "0.7.2"
+  def gebVersion = "0.9.1"
   def seleniumVersion = "2.31.0"
+  def wro4jVersion = "1.7.1"
 
   dependencies {
-    runtime("ro.isdc.wro4j:wro4j-extensions:1.6.3") {
+	
+    runtime("ro.isdc.wro4j:wro4j-extensions:${wro4jVersion}") {
       excludes('slf4j-log4j12', 'slf4j-api', 'spring-web', 'gmaven-runtime-1.6', 'servlet-api', 'ant', 'groovy-all')
     }
 
     test("org.seleniumhq.selenium:selenium-firefox-driver:$seleniumVersion",
-         "org.codehaus.geb:geb-spock:$gebVersion") {
+		 "org.spockframework:spock-grails-support:0.7-groovy-2.0",
+         "org.gebish:geb-spock:$gebVersion") {
       exclude 'selenium-server'
       export = false
     }
@@ -45,13 +43,19 @@ grails.project.dependency.resolution = {
   }
 
   plugins {
+    build(":tomcat:$grailsVersion")
+	
     build ':release:2.2.1', ':rest-client-builder:1.0.3', {
       export = false
     }
 
-    test(":spock:0.6", ":geb:$gebVersion") {
+    test(":spock:0.7") {
+      export = false
+      exclude "spock-grails-support"
+    }
+	
+	test(":geb:$gebVersion") {
       export = false
     }
   }
-  */
 }

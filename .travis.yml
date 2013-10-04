@@ -1,3 +1,14 @@
-language: java
-script: mvn clean package
-env: MAVEN_OPTS="-XX:MaxPermSize=512m"
+language: groovy
+jdk:
+- oraclejdk7
+# if we run on the same box as previous build, make sure target is clean
+before_script: rm -rf target
+script: ./grailsw refresh-dependencies --non-interactive
+  && ./grailsw package-plugin --non-interactive
+  && if [[ $TRAVIS_BRANCH == 'master' ]]; then ./grailsw publish-plugin --no-scm --allow-overwrite --non-interactive ; else echo "Not on master branch, so not publishing"; fi
+env:
+  global:
+  # travis encrypt -a env.global 'GRAILS_CENTRAL_USERNAME=myusername'
+  # travis encrypt -a env.global 'GRAILS_CENTRAL_PASSWORD=mypassword' 
+  - secure: XOu/CeNLX5cvOajk85xxEStQxCeQ4chc7loNwIIUTSNE6YmDtQwT97fcxYMW/7PxB0mE2hpMz3dRkA1sKW9fn7Y3rf41cwp7mhS9Ce1EA/J0aTCAY5Lh2KuRZTYkHFUxTuS+ytPHdFPhOF27lWINhCQs9PSS/Z1DPM5OOfqYlJw=
+  - secure: VXgxf9iXinxTCyv/KHl3POsQ10dbwzIfsOkGq31YwaAPEub9ixrjM5O1mTukboUZZ/9DFYe0wDBwB7V+FHlLE3qvUoLCLkY2sBSNrja66dnKZbEANYvFXzKQmp/LPDkda5HCiWQYf55DV9/L/H6dGqSUhx9SgKt5bOGs+HGyLk0=

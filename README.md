@@ -1,5 +1,11 @@
-Wro4j Grails Plugin
-====================
+# <img src="http://code.google.com/p/wro4j/logo"> Wro4j Grails Plugin
+[![Build Status](https://api.travis-ci.org/wro4j/wro4j.png)](http://travis-ci.org/wro4j/wro4j-grails-plugin)
+
+# Getting Started
+
+In order to get started with wro4j, you have to follow only 3 simple steps.
+
+## Step 1: Install the wro4j plugin
 
 Install the plugin by adding the following to BuildConfig.groovy:
 
@@ -9,17 +15,7 @@ Install the plugin by adding the following to BuildConfig.groovy:
        }
     }
 
-Web Resource Optimizer for Grails
-----------------------------------
-
-
-In order to get started with wro4j, you have to follow only 3 simple steps.
-
-
-Step 1: Install the wro4j plugin
-
-
-Step 2: Create grails-app/conf/Wro.groovy
+## Step 2: Create grails-app/conf/Wro.groovy
 
     groups{
       all{
@@ -30,7 +26,7 @@ Step 2: Create grails-app/conf/Wro.groovy
 
 
 
-Step 3: Use optimized resource
+## Step 3: Use optimized resources
 
     <html>
       <head>
@@ -45,7 +41,7 @@ Step 3: Use optimized resource
 
 
 
-Step 4: (Optional) Configure Wro in Config.groovy :
+## Step 4: (Optional) Configure Wro in Config.groovy :
 
     import ro.isdc.wro.model.resource.processor.impl.BomStripperPreProcessor
     import ro.isdc.wro.model.resource.processor.impl.js.JSMinProcessor
@@ -137,46 +133,45 @@ Step 4: (Optional) Configure Wro in Config.groovy :
 
 
 
-FAQ 
----
-**I have updated the css and js files, and I want to reload the cache**
+# FAQ
+
+## I have updated the css and js files, and I want to reload the cache
 
 Just call this url : http://localhost:${port}/${appName}/wro/wroApi/reloadCache
 
 
 
-**I want to use wro.xml to define my model.**
+## I want to use wro.xml to define my model.
 
 In Config.groovy, just set the Wro4J default ManagerFactory like this :
 
     wro.managerFactoryClassName = null
 
 
-**Can I change web-app/conf/Wro.groovy at runtime?**
+## Can I change web-app/conf/Wro.groovy at runtime?
 
 Yes you can. Each time you update the Wro.groovy file, Wro4J is fully reloaded.
 
 
-**Can I change the wro config in web-app/conf/Config.groovy at runtime?**
+## Can I change the wro config in web-app/conf/Config.groovy at runtime?
 
 
 Yes, of course !!!
 
 
-**How to build this plugin**
+## How to build this plugin
 
-run 'mvn package'
+run 'grailsw package-plugin'
 
 It will create a plugin archive. Note that the selenium tests require that firefox.exe be on the PATH, so be sure to add it before running anything with runs the tests.
 
-**Releasing a new version of this plugin**
+## Releasing a new version of this plugin
 
-See https://code.google.com/p/wro4j/wiki/ReleaseSteps
+run 'grailsw publish-plugin --no-scm'
 
-Wro Processors
---------------
+# Wro Processors
 
-### I want to use CoffeeScript ###
+## I want to use CoffeeScript
 
 CoffeeScript is one of the available Resource Processors in Wro4J (others are : Less, Sass, CSSVariables, ...).
 See the whole list of resource processors here : <http://code.google.com/p/wro4j/wiki/AvailableProcessors>
@@ -226,7 +221,7 @@ And register coffee script files in your model :
       }
     }
 
-### I want to use LessCss ###
+## I want to use LessCss
 
 It is quite similar to CoffeeScript, so look at it first.
 

@@ -9,9 +9,7 @@ import wro4j.grails.plugin.WroConfigHandler
 import wro4j.grails.plugin.WroDSLHandler
 
 class Wro4jGrailsPlugin {
-  def groupId = /* @@GROUPID@@ */ "org.grails.plugins" /* @@GROUPID@@ */
-  // the plugin version == wro4j version
-  def version = /* @@VERSION@@ */ "1.7.1-SNAPSHOT" /* @@VERSION@@ */
+  def version = "1.7.1-SNAPSHOT"
   def grailsVersion = "1.3.7 > *"
   def pluginExcludes = [
       "grails-app/views/index.gsp",
@@ -21,10 +19,10 @@ class Wro4jGrailsPlugin {
       "web-app/js/jquery.js",
   ]
 
-  def author = "Romain Philibert"
-  def authorEmail = "filirom1@gmail.com"
-  def title = /* @@NAME@@ */ "Wro4j Grails Plugin" /* @@NAME@@ */
-  def description = /* @@DESCRIPTION@@ */ "Web Resource Optimizer for Grails" /* @@DESCRIPTION@@ */
+  def author = "Craig Andrews"
+  def authorEmail = "candrews@integralblue.com"
+  def title = "Wro4j Grails Plugin"
+  def description = "Web Resource Optimizer for Grails"
 
   def documentation = "http://code.google.com/p/wro4j/wiki/GrailsPlugin"
   def license = "APACHE"
