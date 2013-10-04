@@ -14,5 +14,5 @@ target-eclipse/
 
 # Grails artifacts
 plugin.xml
-grails-wro4j-*.zip
+grails-wro4j-*.zip*
 target/
