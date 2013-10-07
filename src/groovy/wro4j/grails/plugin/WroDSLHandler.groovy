@@ -15,6 +15,9 @@
 */
 package wro4j.grails.plugin
 
+import grails.util.Holders;
+import org.springframework.core.io.Resource
+
 /**
  * Helper to have an updated version of Wro.groovy DSL
  *
@@ -30,14 +33,24 @@ class WroDSLHandler {
 
   static synchronized Script getDsl() {
     if (dsl == null) {
-      dsl = loadDefaultDSL()
+      dsl = loadDefaultDsl()
     }
     dsl
   }
 
+  public static Script loadDslResource(Resource resource){
+	ClassLoader classLoader = Holders.grailsApplication.classLoader
+	GroovyClassLoader groovyClassLoader;
+	if(classLoader instanceof GroovyClassLoader)
+		groovyClassLoader = classLoader
+	else
+		groovyClassLoader = new GroovyClassLoader(classLoader)
+    return (Script) groovyClassLoader.parseClass(resource.getFile()).newInstance()
+  }
+
   /** Load the DSL from the default class loader      */
-  private static loadDefaultDSL() {
-    WroDSLHandler.getClassLoader().loadClass("Wro").newInstance()
+  private static Script loadDefaultDsl() {
+	return loadDslResource(Holders.applicationContext.getResource(Holders.config.wro.wroPath))
   }
 
   static synchronized void setDsl(Script dsl) {

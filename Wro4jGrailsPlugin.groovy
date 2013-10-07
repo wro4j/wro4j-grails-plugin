@@ -1,6 +1,7 @@
 import grails.util.Holders;
 
 import org.springframework.context.ApplicationContext
+import org.springframework.core.io.Resource;
 import org.springframework.web.filter.DelegatingFilterProxy
 
 import ro.isdc.wro.http.WroContextFilter;
@@ -88,9 +89,12 @@ class Wro4jGrailsPlugin {
 
   /** Detect Wro.groovy changes     */
   def onChange = { event ->
-    if (event.source && event.source instanceof Class && event.source.name == "Wro") {
+    if (event.source && event.source instanceof Class) {
       Class clazz = event.source
       WroDSLHandler.dsl = clazz.newInstance()
+      reload(event.ctx)
+    }else if(event.source && event.source instanceof Resource){
+      WroDSLHandler.dsl = WroDSLHandler.loadDslResource(event.source)
       reload(event.ctx)
     }
   }

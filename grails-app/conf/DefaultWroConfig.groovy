@@ -64,7 +64,7 @@ wro.mbeanName = null
 wro.header = null
 
 /**
- * The path to Wro.groovy. The file must be named Wro.groovy, but can be located anywhere.
+ * The path to Wro.groovy. The file name can be located anywhere and named anything.
  */
 wro.wroPath = "file:./grails-app/conf/Wro.groovy"
 
