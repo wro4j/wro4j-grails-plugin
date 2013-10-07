@@ -22,7 +22,7 @@ import org.springframework.core.io.Resource
  * Helper to have an updated version of Wro.groovy DSL
  *
  * When grails detects that Wro.groovy has changed, the classLoader is not reloaded. This is a problem.
- * So we load Wro.groovy with WroDSLHandler#loadDefaultDSL() the first time from the Class Loader
+ * So we load Wro.groovy with WroDSLHandler#loadDefaultDsl() the first time from the Class Loader
  * And, each time grails detects that Wro.groovy has changed, we manually update the DSL by calling WroDSLHandler#setDsl(Script)
  *
  * @author Filirom1
@@ -50,7 +50,7 @@ class WroDSLHandler {
 
   /** Load the DSL from the default class loader      */
   private static Script loadDefaultDsl() {
-	return loadDslResource(Holders.applicationContext.getResource(Holders.config.wro.wroPath))
+	return loadDslResource(Holders.applicationContext.getResource(WroConfigHandler.config.wro.wroPath))
   }
 
   static synchronized void setDsl(Script dsl) {
