@@ -50,7 +50,7 @@ class WroDSLHandler {
 
   /** Load the DSL from the default class loader      */
   private static Script loadDefaultDsl() {
-	return loadDslResource(Holders.applicationContext.getResource(WroConfigHandler.config.wro.wroPath))
+	return loadDslResource(Holders.applicationContext.getResource(WroConfigHandler.config.wroPath))
   }
 
   static synchronized void setDsl(Script dsl) {

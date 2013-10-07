@@ -82,7 +82,7 @@ class Wro4jGrailsPlugin {
 	}
   }
 
-  def watchedResources = [WroConfigHandler.config.wro.wroPath]
+  def watchedResources = [WroConfigHandler.config.wroPath]
 
   /** Detect Wro.groovy changes     */
   def onChange = { event ->
