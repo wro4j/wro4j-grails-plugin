@@ -71,7 +71,6 @@ class Wro4jGrailsPlugin {
 
   def doWithSpring = {
 	wroManagerFactory(GrailsWroManagerFactory)
-    WroConfigHandler.application = application
     def config = WroConfigHandler.getConfig()
     wroFilter(ReloadableWroFilter) {
       properties = config.toProperties()

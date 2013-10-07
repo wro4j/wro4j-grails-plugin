@@ -16,8 +16,7 @@
 package wro4j.grails.plugin
 
 import grails.util.Environment
-
-import org.codehaus.groovy.grails.commons.GrailsApplication
+import grails.util.Holders;
 
 /**
  * Helper to load DefaultWroConfig.groovy and merge it with merge Config.groovy
@@ -25,7 +24,6 @@ import org.codehaus.groovy.grails.commons.GrailsApplication
  * @author Filirom1
  */
 class WroConfigHandler {
-  static GrailsApplication application
   private static ConfigObject config
   private static final String CONFIG_PREFIX = "wro"
 
@@ -44,7 +42,7 @@ class WroConfigHandler {
    * Force a reload of the security configuration.
    */
   static void reloadConfig() {
-    def grailsConfig = application.getConfig()
+    def grailsConfig = Holders.config
     mergeConfig((ConfigObject) grailsConfig.getProperty(CONFIG_PREFIX), "DefaultWroConfig")
   }
 
