@@ -1,5 +1,5 @@
 # <img src="http://code.google.com/p/wro4j/logo"> Wro4j Grails Plugin
-[![Build Status](https://api.travis-ci.org/wro4j/wro4j.png)](http://travis-ci.org/wro4j/wro4j-grails-plugin)
+[![Build Status](https://api.travis-ci.org/wro4j/wro4j-grails-plugin.png)](http://travis-ci.org/wro4j/wro4j-grails-plugin)
 
 # Getting Started
 
