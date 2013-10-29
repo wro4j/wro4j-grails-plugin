@@ -15,7 +15,13 @@
 */
 package wro4j.grails.plugin
 
+import java.util.regex.Matcher
+import java.util.regex.Pattern;
+
 import grails.util.Holders;
+
+import org.apache.commons.logging.Log
+import org.apache.commons.logging.LogFactory;
 import org.springframework.core.io.Resource
 
 /**
@@ -28,6 +34,8 @@ import org.springframework.core.io.Resource
  * @author Filirom1
  */
 class WroDSLHandler {
+
+  private static final Log LOG = LogFactory.getLog(this)
 
   static Script dsl
 
@@ -50,7 +58,23 @@ class WroDSLHandler {
 
   /** Load the DSL from the default class loader      */
   private static Script loadDefaultDsl() {
-	return loadDslResource(Holders.applicationContext.getResource(WroConfigHandler.config.wroPath))
+	Pattern pattern = Pattern.compile('$file:\\./grails-app/conf/(.+)\\.groovy^')
+	Matcher matcher = pattern.matcher(WroConfigHandler.config.wroPath)
+	if(matcher.matches()){
+		String clazzName = matcher.group(1).replace('/', '.').replace('\\', '.')
+		LOG.debug("wroPath is configured to point to a location which is commonly compiled. Loading the compiled class named '${clazzName}'")
+		try{
+			return Holders.grailsApplication.classLoader.loadClass(clazzName).newInstance()
+		}catch(ClassNotFoundException e){
+			LOG.debug("Failed to load class '${clazzName}', falling back to reading the uncompiled file", e)
+		}
+	}
+	try{
+		return loadDslResource(Holders.applicationContext.getResource(WroConfigHandler.config.wroPath))
+	}catch(Throwable e){
+		LOG.fatal("Failed to load configuration from wroPath. wroPath: ${WroConfigHandler.config.wroPath}", e)
+		throw e
+	}
   }
 
   static synchronized void setDsl(Script dsl) {
