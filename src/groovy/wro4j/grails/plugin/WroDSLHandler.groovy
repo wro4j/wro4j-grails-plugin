@@ -37,34 +37,34 @@ class WroDSLHandler {
 
   private static final Log LOG = LogFactory.getLog(this)
 
-  static Script dsl
+  static private Class<Script> dslClass
 
   static synchronized Script getDsl() {
-    if (dsl == null) {
-      dsl = loadDefaultDsl()
+    if (dslClass == null) {
+      dslClass = loadDefaultDsl()
     }
-    dsl
+    dslClass.newInstance()
   }
 
-  public static Script loadDslResource(Resource resource){
+  public static Class<Script> loadDslResource(Resource resource){
 	ClassLoader classLoader = Holders.grailsApplication.classLoader
 	GroovyClassLoader groovyClassLoader;
 	if(classLoader instanceof GroovyClassLoader)
 		groovyClassLoader = classLoader
 	else
 		groovyClassLoader = new GroovyClassLoader(classLoader)
-    return (Script) groovyClassLoader.parseClass(resource.getFile()).newInstance()
+    return (Class<Script>) groovyClassLoader.parseClass(resource.getFile())
   }
 
   /** Load the DSL from the default class loader      */
-  private static Script loadDefaultDsl() {
+  private static Class<Script> loadDefaultDsl() {
 	Pattern pattern = Pattern.compile('$file:\\./grails-app/conf/(.+)\\.groovy^')
 	Matcher matcher = pattern.matcher(WroConfigHandler.config.wroPath)
 	if(matcher.matches()){
 		String clazzName = matcher.group(1).replace('/', '.').replace('\\', '.')
 		LOG.debug("wroPath is configured to point to a location which is commonly compiled. Loading the compiled class named '${clazzName}'")
 		try{
-			return Holders.grailsApplication.classLoader.loadClass(clazzName).newInstance()
+			return Holders.grailsApplication.classLoader.loadClass(clazzName)
 		}catch(ClassNotFoundException e){
 			LOG.debug("Failed to load class '${clazzName}', falling back to reading the uncompiled file", e)
 		}
@@ -77,7 +77,7 @@ class WroDSLHandler {
 	}
   }
 
-  static synchronized void setDsl(Script dsl) {
-    this.dsl = dsl
+  static synchronized void setDslClass(Class<Script> dslClass) {
+    this.dslClass = dslClass
   }
 }

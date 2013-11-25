@@ -88,10 +88,10 @@ class Wro4jGrailsPlugin {
   def onChange = { event ->
     if (event.source && event.source instanceof Class) {
       Class clazz = event.source
-      WroDSLHandler.dsl = clazz.newInstance()
+      WroDSLHandler.dslClass = clazz
       reload(event.ctx)
     }else if(event.source && event.source instanceof Resource){
-      WroDSLHandler.dsl = WroDSLHandler.loadDslResource(event.source)
+      WroDSLHandler.dslClass = WroDSLHandler.loadDslResource(event.source)
       reload(event.ctx)
     }
   }
