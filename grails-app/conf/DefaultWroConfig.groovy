@@ -11,6 +11,10 @@ import wro4j.grails.plugin.GrailsWroManagerFactory
  */
 wro.gzipResources = true
 /**
+ * integer value for specifying how often (in seconds) the resource changes should be checked. When this value is 0, the cache is never refreshed. When a resource change is detected, the cached group containing changed resource will be invalidated. This is useful during development, when resources are changed often.
+ */
+wro.resourceWatcherUpdatePeriod = 0
+/**
  * Parameter allowing to turn jmx on or off.
  */
 wro.jmxEnabled = true
