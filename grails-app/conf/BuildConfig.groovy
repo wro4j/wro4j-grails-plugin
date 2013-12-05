@@ -16,7 +16,7 @@ grails.project.dependency.resolution = {
 
   def gebVersion = "0.9.1"
   def seleniumVersion = "2.31.0"
-  def wro4jVersion = "1.7.1"
+  def wro4jVersion = "1.7.2"
 
   dependencies {
 	
