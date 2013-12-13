@@ -2,7 +2,7 @@ import org.springframework.context.ApplicationContext
 import org.springframework.core.io.Resource;
 import org.springframework.web.filter.DelegatingFilterProxy
 
-import ro.isdc.wro.http.WroContextFilter;
+import ro.isdc.wro.http.FixedWroContextFilter;
 import wro4j.grails.plugin.GrailsWroServletContextListenerInitializer;
 import wro4j.grails.plugin.ReloadableWroFilter
 import wro4j.grails.plugin.GrailsWroManagerFactory
@@ -35,7 +35,7 @@ class Wro4jGrailsPlugin {
     contextParam[contextParam.size() - 1] + {
       'filter' {
         'filter-name'('wroContextFilter')
-        'filter-class'(WroContextFilter.name)
+        'filter-class'(FixedWroContextFilter.name)
       }
     }
     contextParam[contextParam.size() - 1] + {
