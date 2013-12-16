@@ -2,7 +2,7 @@ import org.springframework.context.ApplicationContext
 import org.springframework.core.io.Resource;
 import org.springframework.web.filter.DelegatingFilterProxy
 
-import ro.isdc.wro.http.FixedWroContextFilter;
+import wro4j.grails.plugin.FixedWroContextFilter;
 import wro4j.grails.plugin.GrailsWroServletContextListenerInitializer;
 import wro4j.grails.plugin.ReloadableWroFilter
 import wro4j.grails.plugin.GrailsWroManagerFactory

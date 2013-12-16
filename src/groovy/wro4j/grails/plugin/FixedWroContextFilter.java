@@ -1,7 +1,7 @@
 /*
  * Copyright (c) 2008. All rights reserved.
  */
-package ro.isdc.wro.http;
+package wro4j.grails.plugin;
 
 import java.io.IOException;
 
