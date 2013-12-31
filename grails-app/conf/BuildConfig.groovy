@@ -21,7 +21,7 @@ grails.project.dependency.resolution = {
   dependencies {
 	
     runtime("ro.isdc.wro4j:wro4j-extensions:${wro4jVersion}") {
-      excludes('slf4j-log4j12', 'slf4j-api', 'spring-web', 'gmaven-runtime-1.6', 'servlet-api', 'ant', 'groovy-all')
+      excludes('slf4j-log4j12', 'slf4j-api', 'spring-web', 'gmaven-runtime-1.7', 'servlet-api', 'ant', 'groovy-all')
     }
 
     test("org.seleniumhq.selenium:selenium-firefox-driver:$seleniumVersion",
