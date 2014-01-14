@@ -7,16 +7,19 @@ grails.project.dependency.resolution = {
 
   inherits 'global'
   log 'warn'
+
+  String gebVersion = "0.9.1"
+  String seleniumVersion = "2.31.0"
+  String wro4jVersion = "1.7.3-SNAPSHOT"
   
   repositories {
     mavenLocal()
     grailsCentral()
     mavenCentral()
+	if(wro4jVersion.endsWith("-SNAPSHOT")){
+		mavenRepo 'https://oss.sonatype.org/content/repositories/snapshots/'
+	}
   }
-
-  def gebVersion = "0.9.1"
-  def seleniumVersion = "2.31.0"
-  def wro4jVersion = "1.7.2"
 
   dependencies {
 	
