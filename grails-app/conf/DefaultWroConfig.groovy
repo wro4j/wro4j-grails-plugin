@@ -15,6 +15,10 @@ wro.gzipResources = true
  */
 wro.resourceWatcherUpdatePeriod = 0
 /**
+ * Parameter allowing resources to be asynchronously processed
+ */
+wro.resourceWatcherAsync = false
+/**
  * Parameter allowing to turn jmx on or off.
  */
 wro.jmxEnabled = true

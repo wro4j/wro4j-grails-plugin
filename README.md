@@ -60,6 +60,10 @@ Wro.groovy can be located anywhere; see the configuration option 'wro.wroPath' b
      */
     wro.resourceWatcherUpdatePeriod = 0
     /**
+     * Parameter allowing resources to be asynchronously processed
+     */
+    wro.resourceWatcherAsync = false
+    /**
      * Parameter allowing to turn jmx on or off.
      */
     wro.jmxEnabled = true
