@@ -1,15 +1,67 @@
 package wro4j.grails.plugin
 
+import org.codehaus.groovy.grails.web.context.ServletContextHolder;
+
+import ro.isdc.wro.http.support.ServletContextAttributeHelper
+import ro.isdc.wro.manager.WroManager
+import ro.isdc.wro.model.resource.ResourceType;
+
 class WroTagLib {
   static namespace = 'wro'
 
+  static returnObjectForTags = ['wroUrl']
+
+  /**
+   * Render a WRO CSS group
+   *
+   * @attr group REQUIRED the group to render
+   * @attr absolute if true, will return an absolute URL. If false, a relative URL is returned. Defaults to false.
+   *
+   * @emptyTag
+   */
   def css = { attrs ->
-    def group = attrs.group
-    out << """<link rel="stylesheet" type="text/css" href="${g.resource(dir: '/')}wro/${group}.css" />"""
+    String group = attrs.group
+	boolean absolute = attrs.boolean("absolute", false);
+	if(group == null) throw new IllegalArgumentException("group is required")
+	out << """<link rel="stylesheet" type="text/css" href="${wro.wroUrl(group: group, absolute: absolute, type: 'CSS')}" />"""
   }
 
+  /**
+   * Render a WRO JS group
+   *
+   * @attr group REQUIRED the group to render
+   * @attr absolute if true, will return an absolute URL. If false, a relative URL is returned. Defaults to false.
+   *
+   * @emptyTag
+   */
   def js = { attrs ->
-    def group = attrs.group
-    out << """<script type="text/javascript" src="${g.resource(dir: '/')}wro/${group}.js"></script>"""
+    String group = attrs.group
+	boolean absolute = attrs.boolean("absolute", false);
+	if(group == null) throw new IllegalArgumentException("group is required")
+	out << """<script type="text/javascript" src="${wro.wroUrl(group: group, absolute: absolute, type: 'JS')}"></script>"""
+  }
+
+  /**
+   * Get the URL of a wro group
+   *
+   * @attr group REQUIRED the group to render
+   * @attr type REQUIRED the type of the group to render (either 'css' or 'js')
+   * @attr absolute if true, will return an absolute URL. If false, a relative URL is returned. Defaults to false.
+   *
+   * @emptyTag
+   */
+  String wroUrl = { attrs ->
+	  boolean absolute = attrs.boolean("absolute", false);
+	  String group = attrs.group
+	  if(group == null) throw new IllegalArgumentException("group is required")
+	  ResourceType type = ResourceType.get(attrs.type);
+
+	  WroManager wroManager =
+		  new ServletContextAttributeHelper(
+			  ServletContextHolder.getServletContext()
+		  ).getManagerFactory().create()
+	  String contextPath = request.contextPath
+	  if(! contextPath.endsWith("/")) contextPath = contextPath + "/"
+	  return "${contextPath}wro/${wroManager.encodeVersionIntoGroupPath(group, type, true)}"
   }
 }
