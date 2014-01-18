@@ -8,26 +8,30 @@ In order to get started with wro4j, you have to follow only 3 simple steps.
 ## Step 1: Install the wro4j plugin
 
 Install the plugin by adding the following to BuildConfig.groovy:
-
+```groovy
     grails.project.dependency.resolution {
        plugins {
           compile ':wro4j:latest.release'
        }
     }
+```
 
 ## Step 2: Create grails-app/conf/Wro.groovy
 
+```groovy
     groups{
       all{
         css(minimize: false, "/css/*.css")
         js "/js/*.js"
       }
     }
+```    
 
 Wro.groovy can be located anywhere; see the configuration option 'wro.wroPath' below.
 
 ## Step 3: Use optimized resources
 
+```html
     <html>
       <head>
         <title>Web Page using wro4j</title>
@@ -38,11 +42,12 @@ Wro.groovy can be located anywhere; see the configuration option 'wro.wroPath' b
 
       </body>
     </html>
-
+```
 
 
 ## Step 4: (Optional) Configure Wro in Config.groovy :
 
+```groovy
     import ro.isdc.wro.model.resource.processor.impl.BomStripperPreProcessor
     import ro.isdc.wro.model.resource.processor.impl.js.JSMinProcessor
     import ro.isdc.wro.model.resource.processor.impl.js.SemicolonAppenderPreProcessor
@@ -144,7 +149,7 @@ Wro.groovy can be located anywhere; see the configuration option 'wro.wroPath' b
         wro.debug = true
       }
     }
-
+```
 
 
 # FAQ
