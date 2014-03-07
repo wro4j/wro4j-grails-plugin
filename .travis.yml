@@ -6,13 +6,14 @@ before_script:
   - "sh -e /etc/init.d/xvfb start"
   # if we run on the same box as previous build, make sure target is clean
   - rm -rf target
-script: ./grailsw refresh-dependencies --non-interactive
-  && ./grailsw test-app --non-interactive
-  && ./grailsw package-plugin --non-interactive
-  && if [[ $TRAVIS_BRANCH == 'master' && $TRAVIS_REPO_SLUG == 'wro4j/wro4j-grails-plugin' ]]; then ./grailsw publish-plugin --no-scm --allow-overwrite --non-interactive ; else echo "Not on master branch, so not publishing"; fi
+script: ./travis-build.sh
 env:
   global:
+  - GIT_NAME="Craig Andrews"
+  - GIT_EMAIL="candrews@integralblue.com"
   # travis encrypt -a env.global 'GRAILS_CENTRAL_USERNAME=myusername'
-  # travis encrypt -a env.global 'GRAILS_CENTRAL_PASSWORD=mypassword' 
+  # travis encrypt -a env.global 'GRAILS_CENTRAL_PASSWORD=mypassword'
+  # travis encrypt -a env.global 'GH_TOKEN=token' # get the token from https://github.com/settings/applications
   - secure: qScQg2sTyGKpe2JnLpYgffUS5VyGFSHMIhTL2SIZWsJtByHgA1JhpxIiTHSp0TFcHklVebTzdpwPCNyYmY+JaLA7Eiudz0FKxmUTzEdf99pBtSp4220beeBM2N7SE7fUyDR5tb5NgTvqYwocGqRCwBOtrFs94mLofYHtmJHQfkQ=
   - secure: NSoxSR0pJ3z6hhWwnI5OUt8ySIB+Ik8zmQ0CdFRpIETWgOqpOMxiwqQTL1SGYbEPu3DMqaBghlQTyFyFjEGgqpjb+dJJw9EMj9nYxyji1dasYSiyj0pWK5c0Jx1wJT7pPkO1pLSEnR1FCczohqJpuOCoAVdGAmT059r/2jYbdng=
+  - secure: GW6nCkrjhVXd837bz/QMq2wRQ9r5VnWGk6nh1HJN8yWuVetJinnKyuph4ynQJPubSthZZuev7g4XiOHxlX93fuTnlEMJO1a3DfkfwUjVDoXeI5Oflo5trrDMMk89gt2cRqXHJUwo0Oe3nFkwYBdiSazATCs2pVzgHrFXekdNISw=
