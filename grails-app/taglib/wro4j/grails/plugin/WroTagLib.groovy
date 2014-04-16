@@ -56,12 +56,12 @@ class WroTagLib {
 	  if(group == null) throw new IllegalArgumentException("group is required")
 	  ResourceType type = ResourceType.get(attrs.type);
 
+	  ServletContextAttributeHelper servletContextAttributeHelper = new ServletContextAttributeHelper(ServletContextHolder.getServletContext());
 	  WroManager wroManager =
-		  new ServletContextAttributeHelper(
-			  ServletContextHolder.getServletContext()
-		  ).getManagerFactory().create()
+		  servletContextAttributeHelper.getManagerFactory().create()
 	  String contextPath = request.contextPath
 	  if(! contextPath.endsWith("/")) contextPath = contextPath + "/"
-	  return "${contextPath}wro/${wroManager.encodeVersionIntoGroupPath(group, type, true)}"
+	  boolean minimize = servletContextAttributeHelper.getWroConfiguration().isMinimizeEnabled()
+	  return "${contextPath}wro/${wroManager.encodeVersionIntoGroupPath(group, type, minimize)}"
   }
 }
