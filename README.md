@@ -65,6 +65,11 @@ Wro.groovy can be located anywhere; see the configuration option 'wro.wroPath' b
      */
     wro.resourceWatcherUpdatePeriod = 0
     /**
+     * flag indicating if the minimization is enabled. When this flag is false, the minimization will be
+     *         suppressed for all resources.
+     */
+    wro.minimizeEnabled = true
+    /**
      * Parameter allowing resources to be asynchronously processed
      */
     wro.resourceWatcherAsync = false
