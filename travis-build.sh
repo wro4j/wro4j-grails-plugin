@@ -4,7 +4,7 @@ set -e
 ./grailsw test-app --non-interactive
 ./grailsw package-plugin --non-interactive
 ./grailsw doc --pdf --non-interactive
-if [[ $TRAVIS_BRANCH == 'master' && $TRAVIS_REPO_SLUG == 'wro4j/wro4j-grails-plugin' ]]; then
+if [[ $TRAVIS_BRANCH == 'master' && $TRAVIS_REPO_SLUG == 'wro4j/wro4j-grails-plugin' && TRAVIS_PULL_REQUEST == 'false' ]]; then
   git config --global user.name "$GIT_NAME"
   git config --global user.email "$GIT_EMAIL"
   git config --global credential.helper "store --file=~/.git-credentials"
