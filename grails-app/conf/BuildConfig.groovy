@@ -10,7 +10,7 @@ grails.project.dependency.resolution = {
 
   String gebVersion = "0.9.1"
   String seleniumVersion = "2.43.1"
-  String wro4jVersion = "1.7.6"
+  String wro4jVersion = "1.7.7"
   
   repositories {
     mavenLocal()
