@@ -9,7 +9,7 @@ grails.project.dependency.resolution = {
   log 'warn'
 
   String gebVersion = "0.9.1"
-  String seleniumVersion = "2.31.0"
+  String seleniumVersion = "2.43.1"
   String wro4jVersion = "1.7.6"
   
   repositories {
